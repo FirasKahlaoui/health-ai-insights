@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../redux/actions/authActions';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../redux/actions/authActions";
 
 const Register = ({ history }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const Register = ({ history }) => {
   };
 
   if (userInfo) {
-    history.push('/profile');
+    history.push("/profile");
   }
 
   return (
