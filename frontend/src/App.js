@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import './App.css';
 
 const App = () => {
   return (
