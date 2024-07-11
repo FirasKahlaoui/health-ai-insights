@@ -18,12 +18,16 @@ const registerUser = async (req, res) => {
       email,
       password,
     });
-
+    
+    console.log("Attempting to save user:", user);
+    
     // Hash password
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt);
-
+    
     await user.save();
+    
+    console.log("User saved successfully:", user);
 
     const payload = {
       user: {
@@ -85,10 +89,12 @@ const loginUser = async (req, res) => {
 // Get user profile
 const getUserProfile = async (req, res) => {
   try {
+    console.log("Retrieving user profile for ID:", req.user.id);
     const user = await User.findById(req.user.id).select("-password");
+    console.log("User profile retrieved:", user);
     res.json(user);
   } catch (err) {
-    console.error(err.message);
+    console.error("Error retrieving user profile:", err.message);
     res.status(500).send("Server error");
   }
 };

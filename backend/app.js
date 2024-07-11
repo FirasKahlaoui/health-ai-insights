@@ -1,7 +1,8 @@
-const express = require('express');
-const connectDB = require('./config/db');
-const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
+const express = require("express");
+const connectDB = require("./config/db");
+const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 dotenv.config();
 connectDB();
@@ -9,10 +10,11 @@ connectDB();
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
-app.use('/api/auth', require('./routes/auth'));
+app.use("/api/auth", require("./routes/auth"));
 
-app.get('/', (req, res) => res.send('API is running'));
+app.get("/", (req, res) => res.send("API is running"));
 
 const PORT = process.env.PORT || 5000;
 
